@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+## my gemset: rvm use ruby-2.0.0-p481@rails42
+
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.6'
