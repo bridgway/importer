@@ -1,10 +1,24 @@
 class SchoolsController < ApplicationController
+
+  require "#{Rails.root}/lib/Importer.rb" # check if required. 
+
   before_action :set_school, only: [:show, :edit, :update, :destroy]
 
   # GET /schools
   # GET /schools.json
   def index
     @schools = School.all
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { send_data json: @schools }
+      format.csv { send_data @schools.to_csv }
+    end
+  end
+
+  def import
+    School.import(params[:file], params[:file].content_type)
+    redirect_to root_url, notice: "School data imported."
   end
 
   # GET /schools/1
@@ -69,6 +83,6 @@ class SchoolsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def school_params
-      params.require(:school).permit(:name)
+      params.require(:school).permit(:name, users: [:firstname, :lastname, :user_type, :school_id ])
     end
 end

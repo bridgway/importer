@@ -1,9 +1,30 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Name:</strong>
+  <b>School:</b>
   <%= @school.name %>
 </p>
 
+<table>
+  <tr>
+    <th>User</th>
+    <th>Type</th>
+    <th></th>
+  </tr>
+
+<% @school.users.each do |user| %>
+  <tr>
+    <td><%= user.firstname + " " + user.lastname %></td>
+    <td><%= user.user_type %></td>
+  </tr>
+<% end %>
+</table>
+
 <%= link_to 'Edit', edit_school_path(@school) %> |
 <%= link_to 'Back', schools_path %>
+
+<p>
+  Download:
+  <%= link_to "CSV", schools_path(format: "csv") %> |
+  <%= link_to "JSON", schools_path(format: "json") %>
+</p>

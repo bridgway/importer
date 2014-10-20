@@ -1,4 +1,14 @@
-<h1>Listing schools</h1>
+<h1>Schools</h1> 
+
+<p>
+  <%= link_to 'Users', users_path %>
+</p>
+
+<p>
+  Download:
+  <%= link_to "CSV", schools_path(format: "csv") %> |
+  <%= link_to "JSON", schools_path(format: "json") %>
+</p>
 
 <table>
   <thead>
@@ -12,7 +22,7 @@
     <% @schools.each do |school| %>
       <tr>
         <td><%= school.name %></td>
-        <td><%= link_to 'Show', school %></td>
+        <td><%= link_to 'Users', school %></td>
         <td><%= link_to 'Edit', edit_school_path(school) %></td>
         <td><%= link_to 'Destroy', school, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
@@ -23,3 +33,10 @@
 <br>
 
 <%= link_to 'New School', new_school_path %>
+
+<h2>Import School</h2>
+
+<%= form_tag import_schools_path, multipart: true do %>
+  <%= file_field_tag :file %>
+  <%= submit_tag "Import" %>
+<% end %>
