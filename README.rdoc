@@ -4,7 +4,7 @@ A simple csv/json importer for certain school data.
 
 Sample import files can be found in the pubic directory. 
 
-[*Deployed App*](http://www. )
+[*Deployed App*](http://limitless-plateau-9604.herokuapp.com)
 
 To dos:
 
