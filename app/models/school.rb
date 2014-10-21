@@ -10,11 +10,11 @@ class School < ActiveRecord::Base
 	def self.import(file, content_type)
 
 	  case content_type
-		when "application/json"
+		when "application/json", "application/octet-stream"
 			importer = JsonImporter.new(file)
 			schools_array = importer.generate_array
 			update_schools_json(schools_array)
-		when "text/csv"
+		when "text/csv", "application/vnd.ms-excel"
 			importer = CSVImporter.new(file)
 			schools_array = importer.generate_array
 			update_schools_csv(schools_array)
