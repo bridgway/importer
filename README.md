@@ -1,28 +1,16 @@
-== README
+# csv/json importer 
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A simple csv/json importer for certain school data. 
 
-Things you may want to cover:
+Sample import files can be found in the pubic directory. 
 
-* Ruby version
+[*Deployed App*](http://limitless-plateau-9604.herokuapp.com)
 
-* System dependencies
+To dos:
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+- Add form validations
+- Modify csv and json downloaded files to enable date change and re-import
+- Add integration tests
+- Add excel import
+- Improve views
+- refactor, refactor & refactor!
