@@ -1,6 +1,6 @@
 class SchoolsController < ApplicationController
 
-  require "#{Rails.root}/lib/Importer.rb" # check if required. 
+  require "#{Rails.root}/lib/importer.rb" # check if required. 
 
   before_action :set_school, only: [:show, :edit, :update, :destroy]
 
