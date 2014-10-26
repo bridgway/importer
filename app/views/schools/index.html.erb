@@ -37,6 +37,6 @@
 <h2>Import School</h2>
 
 <%= form_tag import_schools_path, multipart: true do %>
-  <%= file_field_tag :file %>
+  <%= file_field_tag :file, accept: 'application/json, text/csv' %>
   <%= submit_tag "Import" %>
 <% end %>

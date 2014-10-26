@@ -1,4 +1,5 @@
 json.array!(@schools) do |school|
-  json.extract! school, :id, :name
-  json.url school_url(school, format: :json)
+  json.extract! school, :name
+  json.teachers school.users.where(user_type: ['teacher', 'Teacher']), :lastname, :firstname
+  json.students school.users.where(user_type: ['student', 'Student']), :lastname, :firstname
 end

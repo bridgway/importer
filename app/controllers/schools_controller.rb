@@ -1,23 +1,24 @@
 class SchoolsController < ApplicationController
 
-  require "#{Rails.root}/lib/importer.rb" # check if required. 
+  require "#{Rails.root}/lib/importer.rb" 
 
   before_action :set_school, only: [:show, :edit, :update, :destroy]
 
   # GET /schools
   # GET /schools.json
+
   def index
     @schools = School.all
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { send_data json: @schools }
+      format.json
       format.csv { send_data @schools.to_csv }
     end
   end
 
   def import
-    School.import(params[:file], params[:file].content_type)
+    School.import(params[:file])
     redirect_to root_url, notice: "School data imported."
   end
 

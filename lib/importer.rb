@@ -1,7 +1,11 @@
 module Importer
 
+	# Extends CSV stlib to add custom converter ensuring any blank strings to nil 
+	CSV::Converters[:blank_to_nil] = lambda do |field|
+  	field && field.empty? ? nil : field
+	end
+
 	class JsonImporter
-		#attr_accessor :file #looks like not needed 
 
 		def initialize(file)
 			@file = file
@@ -22,7 +26,7 @@ module Importer
 
 		def generate_array
 			schools_array = []
-	    CSV.foreach(@file.path, headers: true, header_converters: :symbol) do |row|
+	    CSV.foreach(@file.path, headers: true, header_converters: :symbol, converters: [:all, :blank_to_nil]) do |row|
 	  		schools_array << row.to_hash
 	  	end
 	  	return schools_array
